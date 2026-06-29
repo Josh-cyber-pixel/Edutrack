@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduTrack — School Management for Ghanaian Schools</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0D0F1A;
+      --paper: #F7F8FC;
+      --navy: #0F1F5C;
+      --blue: #1A3DB5;
+      --accent: #3B82F6;
+      --gold: #F5A623;
+      --green: #16A34A;
+      --red: #DC2626;
+      --muted: #64748B;
+      --border: #E2E8F0;
+      --white: #FFFFFF;
+      --card: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Sora', sans-serif; line-height: 1.2; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(247,248,252,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-mark {
+      width: 36px; height: 36px; background: var(--navy); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; position: relative;
+    }
+    .logo-mark::after {
+      content: ''; position: absolute; inset: -2px; border-radius: 12px;
+      border: 2px solid var(--gold);
+    }
+    .logo-mark span {
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 16px; color: var(--gold);
+    }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-text strong { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 17px; color: var(--navy); }
+    .logo-text small { font-size: 10px; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      background: var(--navy); color: var(--white) !important;
+      padding: 9px 20px; border-radius: 8px;
+      font-size: 14px !important; font-weight: 600 !important; transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--blue) !important; }
+
+    /* HERO */
+    .hero {
+      background: var(--navy); color: var(--white);
+      padding: 96px 5% 80px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -120px; right: -80px;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -80px; left: 10%;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(245,166,35,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+      align-items: center; position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(245,166,35,0.15); border: 1px solid rgba(245,166,35,0.3);
+      color: var(--gold); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 100px; margin-bottom: 24px;
+    }
+    .hero-badge::before {
+      content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 4.5vw, 54px); font-weight: 800;
+      line-height: 1.1; margin-bottom: 20px; color: var(--white);
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero p {
+      font-size: 17px; color: rgba(255,255,255,0.72);
+      margin-bottom: 36px; max-width: 480px; line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--navy);
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px;
+      padding: 14px 28px; border-radius: 10px;
+      transition: transform 0.15s, box-shadow 0.15s; border: none; cursor: pointer;
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(245,166,35,0.35); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--white);
+      font-family: 'Sora', sans-serif; font-weight: 600; font-size: 15px;
+      padding: 13px 24px; border-radius: 10px;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      transition: border-color 0.2s, background 0.2s; cursor: pointer;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); }
+
+    /* Dashboard mockup */
+    .hero-visual { position: relative; }
+    .dashboard-card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 24px; backdrop-filter: blur(8px);
+    }
+    .dash-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .dash-title { font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); }
+    .dash-badge { background: rgba(22,163,74,0.2); color: #4ade80; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 100px; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .stat-box { background: rgba(255,255,255,0.07); border-radius: 10px; padding: 14px; }
+    .stat-box .num { font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 800; color: var(--white); line-height: 1; }
+    .stat-box .lbl { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+    .stat-box .delta { font-size: 11px; color: #4ade80; font-weight: 600; margin-top: 2px; }
+    .attendance-bar { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; }
+    .att-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .att-label { font-size: 12px; color: rgba(255,255,255,0.6); }
+    .att-pct { font-size: 12px; font-weight: 600; color: var(--white); }
+    .bar-track { height: 5px; background: rgba(255,255,255,0.1); border-radius: 100px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--accent), var(--gold)); }
+    .sms-alert {
+      background: rgba(245,166,35,0.12); border: 1px solid rgba(245,166,35,0.25);
+      border-radius: 8px; padding: 10px 12px;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .sms-icon {
+      width: 28px; height: 28px; background: rgba(245,166,35,0.2); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      color: var(--gold);
+    }
+    .sms-icon svg { width: 14px; height: 14px; }
+    .sms-text { font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+    .sms-text strong { color: var(--gold); }
+
+    /* Floating pills */
+    .float-pill {
+      position: absolute; background: var(--white); border-radius: 100px;
+      padding: 8px 14px; display: flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; color: var(--navy);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2); white-space: nowrap;
+      animation: floatY 3s ease-in-out infinite;
+    }
+    .float-pill:nth-child(2) { animation-delay: -1.5s; }
+    @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+    .pill-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .pill-1 { top: -16px; right: 24px; }
+    .pill-2 { bottom: -16px; left: 16px; }
+
+    /* TRUST BAR */
+    .trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 18px 5%; }
+    .trust-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;
+    }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); font-weight: 500; }
+    .trust-item svg { color: var(--green); flex-shrink: 0; width: 16px; height: 16px; }
+
+    /* SECTIONS */
+    section { padding: 88px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .section-title { font-family: 'Sora', sans-serif; font-size: clamp(28px,3.5vw,40px); font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+    .section-sub { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.7; margin-bottom: 56px; }
+
+    /* FEATURES */
+    .features { background: var(--white); }
+    .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .feature-card {
+      background: var(--paper); border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .feature-card:hover { box-shadow: 0 12px 32px rgba(15,31,92,0.08); transform: translateY(-2px); }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+    }
+    .feature-icon svg { width: 22px; height: 22px; }
+    .feature-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    .icon-blue { background: rgba(59,130,246,0.1); color: #3B82F6; }
+    .icon-gold { background: rgba(245,166,35,0.12); color: #D97706; }
+    .icon-green { background: rgba(22,163,74,0.1); color: #16A34A; }
+    .icon-purple { background: rgba(139,92,246,0.1); color: #7C3AED; }
+    .icon-red { background: rgba(220,38,38,0.08); color: #DC2626; }
+    .icon-navy { background: rgba(15,31,92,0.08); color: #0F1F5C; }
+
+    /* HOW IT WORKS */
+    .how { background: var(--paper); }
+    .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; }
+    .steps::before {
+      content: ''; position: absolute; top: 28px; left: 12.5%; right: 12.5%;
+      height: 2px; background: linear-gradient(90deg, var(--accent), var(--gold)); z-index: 0;
+    }
+    .step { text-align: center; padding: 0 16px; position: relative; z-index: 1; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%; background: var(--navy);
+      color: var(--white); font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+      border: 3px solid var(--paper); box-shadow: 0 0 0 2px var(--navy);
+    }
+    .step h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* WHO IT'S FOR */
+    .who { background: var(--white); }
+    .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .who-card { border: 1.5px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color 0.2s; }
+    .who-card:hover { border-color: var(--accent); }
+    .who-card .tag {
+      display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 100px; margin-bottom: 16px;
+    }
+    .tag-basic { background: rgba(59,130,246,0.1); color: var(--accent); }
+    .tag-shs { background: rgba(245,166,35,0.15); color: #B45309; }
+    .who-card h3 { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+    .who-card p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .check-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: var(--ink); }
+    .check-list li svg { color: var(--green); flex-shrink: 0; margin-top: 2px; width: 15px; height: 15px; }
+
+    /* PORTALS */
+    .portals { background: var(--navy); color: var(--white); }
+    .portals .section-title { color: var(--white); }
+    .portals .section-sub { color: rgba(255,255,255,0.65); }
+    .portals .section-eyebrow { color: var(--gold); }
+    .portal-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    .portal-card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 28px 20px; text-align: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .portal-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+    .portal-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .portal-icon svg { width: 24px; height: 24px; }
+    .pi-admin { background: rgba(59,130,246,0.2); color: #93C5FD; }
+    .pi-teacher { background: rgba(245,166,35,0.2); color: var(--gold); }
+    .pi-accountant { background: rgba(22,163,74,0.2); color: #86EFAC; }
+    .pi-parent { background: rgba(139,92,246,0.2); color: #C4B5FD; }
+    .portal-card h4 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .portal-card p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+    /* CONTACT */
+    .contact { background: var(--paper); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .contact-left h2 { font-size: clamp(28px,3vw,38px); font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+    .contact-left p { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 32px; }
+    .contact-methods { display: flex; flex-direction: column; gap: 14px; }
+    .contact-method {
+      display: flex; align-items: center; gap: 14px; padding: 16px 18px;
+      background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+      transition: border-color 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit;
+    }
+    .contact-method:hover { border-color: var(--accent); box-shadow: 0 4px 12px rgba(59,130,246,0.1); }
+    .cm-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .cm-icon svg { width: 18px; height: 18px; }
+    .cm-icon-green { background: rgba(22,163,74,0.1); color: var(--green); }
+    .cm-icon-blue { background: rgba(59,130,246,0.1); color: var(--accent); }
+    .cm-icon-gold { background: rgba(245,166,35,0.12); color: #D97706; }
+    .cm-label { font-size: 11px; color: var(--muted); font-weight: 500; }
+    .cm-value { font-size: 15px; font-weight: 600; color: var(--navy); }
+
+    .contact-form-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px;
+    }
+    .contact-form-card h3 { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .contact-form-card .sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 11px 14px; border: 1.5px solid var(--border);
+      border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 14px;
+      color: var(--ink); background: var(--paper); transition: border-color 0.2s; outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-submit {
+      width: 100%; background: var(--navy); color: var(--white);
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px;
+      padding: 13px; border: none; border-radius: 10px; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .form-submit:hover { background: var(--blue); transform: translateY(-1px); }
+
+    /* FOOTER */
+    footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 32px 5%; }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand { font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.7); }
+    .footer-brand span { color: var(--gold); }
+    footer p { font-size: 13px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .steps::before { display: none; }
+      .portal-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .who-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .features-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .portal-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 64px 5%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .float-pill { animation: none; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-mark"><span>E</span></div>
+      <div class="logo-text">
+        <strong>EduTrack</strong>
+        <small>by NoxVector EduCare</small>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#who">Who it's for</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Built for Ghanaian Schools</div>
+      <h1>Run your school.<br><em>Not spreadsheets.</em></h1>
+      <p>EduTrack gives Basic and SHS schools one place to manage students, track attendance, collect fees, and generate report cards — with live SMS alerts to parents the moment it matters.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Book a Free Demo <i data-lucide="arrow-right" style="width:16px;height:16px"></i></a>
+        <a href="#features" class="btn-outline">See what's inside <i data-lucide="chevron-down" style="width:16px;height:16px"></i></a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="float-pill pill-1">
+        <div class="pill-dot" style="background:#4ade80"></div>
+        247 students active
+      </div>
+      <div class="float-pill pill-2">
+        <div class="pill-dot" style="background:var(--gold)"></div>
+        SMS sent to 12 parents
+      </div>
+      <div class="dashboard-card">
+        <div class="dash-topbar">
+          <span class="dash-title">Today's Overview — JHS 1A</span>
+          <span class="dash-badge">● Live</span>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-box">
+            <div class="num">38</div>
+            <div class="lbl">Students Enrolled</div>
+            <div class="delta">↑ 3 this term</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">GHS 24,800</div>
+            <div class="lbl">Fees Collected</div>
+            <div class="delta">↑ 82% collected</div>
+          </div>
+        </div>
+        <div class="attendance-bar">
+          <div class="att-row">
+            <span class="att-label">Attendance Today</span>
+            <span class="att-pct">94%</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:94%"></div></div>
+        </div>
+        <div class="sms-alert">
+          <div class="sms-icon">
+            <i data-lucide="message-square" style="width:14px;height:14px;color:var(--gold)"></i>
+          </div>
+          <div class="sms-text">
+            <strong>SMS Alert sent:</strong> "Dear Mrs. Asante, your ward Kofi was marked absent today. Please contact the school. — EduTrack"
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <i data-lucide="check-circle" style="width:16px;height:16px;color:var(--green)"></i>
+      GES grading scale built in
+    </div>
+    <div class="trust-item">
+      <i data-lucide="check-circle" style="width:16px;height:16px;color:var(--green)"></i>
+      Works on any device
+    </div>
+    <div class="trust-item">
+      <i data-lucide="check-circle" style="width:16px;height:16px;color:var(--green)"></i>
+      No IT team required
+    </div>
+    <div class="trust-item">
+      <i data-lucide="check-circle" style="width:16px;height:16px;color:var(--green)"></i>
+      Data stays secure in the cloud
+    </div>
+    <div class="trust-item">
+      <i data-lucide="check-circle" style="width:16px;height:16px;color:var(--green)"></i>
+      Basic &amp; SHS ready
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="section-eyebrow">Everything you need</div>
+    <h2 class="section-title">One system. Zero chaos.</h2>
+    <p class="section-sub">Everything a school administrator needs — from the first day of term to the last report card — in a single clean interface.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon icon-blue"><i data-lucide="file-text"></i></div>
+        <h3>Automated Report Cards</h3>
+        <p>Enter CA and exam scores once. EduTrack calculates totals, assigns grades using your school's scale, and generates printable report cards instantly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-gold"><i data-lucide="wallet"></i></div>
+        <h3>Fee Management</h3>
+        <p>Create fee structures for tuition, exam fees, feeding, and PTA. Generate invoices, record payments, and track defaulters — all in one place.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-green"><i data-lucide="message-circle"></i></div>
+        <h3>Attendance + Live SMS</h3>
+        <p>Mark attendance in under 2 minutes. Parents receive an instant SMS the moment their child is marked absent — no phone calls needed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-purple"><i data-lucide="users"></i></div>
+        <h3>Student Records</h3>
+        <p>Full student profiles with photos, guardian contacts, enrollment history, and medical notes. Everything you need, exactly where you expect it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-red"><i data-lucide="calendar"></i></div>
+        <h3>Timetable Builder</h3>
+        <p>Build and publish your school timetable once. Teachers see their schedule, students see their classes, and changes update everywhere instantly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-navy"><i data-lucide="megaphone"></i></div>
+        <h3>Announcements & Messaging</h3>
+        <p>Post school-wide announcements or send direct messages to parents and teachers. Keep everyone informed without leaving the platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-inner">
+    <div class="section-eyebrow">Simple setup</div>
+    <h2 class="section-title">Up and running in a day.</h2>
+    <p class="section-sub">We handle the setup. You just bring your student list.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>We set up your school</h4>
+        <p>We create your account, add your classes, subjects, and fee structures to match your school's structure.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Import your students</h4>
+        <p>Bring your student list. We add them to the system with their guardians and enroll them in their classes.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Train your staff</h4>
+        <p>A 1-hour walkthrough with your teachers and accountant. The interface is simple enough to learn in one session.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Go live</h4>
+        <p>Start marking attendance, collecting fees, and communicating with parents from day one of term.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="who" id="who">
+  <div class="section-inner">
+    <div class="section-eyebrow">Designed for Ghana</div>
+    <h2 class="section-title">Built for every level.</h2>
+    <p class="section-sub">Whether you run a KG–JHS school or a full Senior High School, EduTrack is configured for your grading system and structure.</p>
+    <div class="who-grid">
+      <div class="who-card">
+        <span class="tag tag-basic">Basic Schools</span>
+        <h3>KG, Primary &amp; JHS</h3>
+        <p>Manage every class from Creche to JHS 3 in one system. Our GES-aligned grading scale handles the full Basic school structure out of the box.</p>
+        <ul class="check-list">
+          <li><i data-lucide="check"></i> Nursery through JHS 3 class structure</li>
+          <li><i data-lucide="check"></i> GES grading scale (A1–F9) built in</li>
+          <li><i data-lucide="check"></i> CA + Exam score entry (30/70 split)</li>
+          <li><i data-lucide="check"></i> End-of-term report card generation</li>
+          <li><i data-lucide="check"></i> Parent portal for each student</li>
+        </ul>
+      </div>
+      <div class="who-card">
+        <span class="tag tag-shs">Senior High Schools</span>
+        <h3>SHS &amp; Technical Schools</h3>
+        <p>Handle the complexity of SHS programs, elective tracks, and WAEC-aligned grading — without spreadsheets or custom software.</p>
+        <ul class="check-list">
+          <li><i data-lucide="check"></i> Science, Arts, Business, Technical tracks</li>
+          <li><i data-lucide="check"></i> WAEC-aligned grading support</li>
+          <li><i data-lucide="check"></i> Semester and term management</li>
+          <li><i data-lucide="check"></i> House and boarding system tracking</li>
+          <li><i data-lucide="check"></i> Detailed financial reporting by term</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTALS -->
+<section class="portals">
+  <div class="section-inner">
+    <div class="section-eyebrow">Role-based access</div>
+    <h2 class="section-title">Everyone sees exactly what they need.</h2>
+    <p class="section-sub">One platform, four different views — each person sees only what's relevant to their role.</p>
+    <div class="portal-grid">
+      <div class="portal-card">
+        <div class="portal-icon pi-admin"><i data-lucide="layout-dashboard"></i></div>
+        <h4>Admin Portal</h4>
+        <p>Full control over students, staff, fees, timetable, and reports.</p>
+      </div>
+      <div class="portal-card">
+        <div class="portal-icon pi-teacher"><i data-lucide="graduation-cap"></i></div>
+        <h4>Teacher Portal</h4>
+        <p>Mark attendance, enter scores, view classes and generate report cards.</p>
+      </div>
+      <div class="portal-card">
+        <div class="portal-icon pi-accountant"><i data-lucide="receipt"></i></div>
+        <h4>Accountant Portal</h4>
+        <p>Generate invoices, record payments, track defaulters and view financial summaries.</p>
+      </div>
+      <div class="portal-card">
+        <div class="portal-icon pi-parent"><i data-lucide="heart-handshake"></i></div>
+        <h4>Parent Portal</h4>
+        <p>View their child's attendance, assignments, fees, and receive SMS alerts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="section-eyebrow">Get in touch</div>
+        <h2>Ready to see it in action?</h2>
+        <p>Book a free demo and we'll walk you through the full system in under 30 minutes. No commitment, no pressure — just a working product built for your school.</p>
+        <div class="contact-methods">
+          <a href="https://wa.me/233537041221" class="contact-method" target="_blank" rel="noopener">
+            <div class="cm-icon cm-icon-green"><i data-lucide="message-circle"></i></div>
+            <div>
+              <div class="cm-label">WhatsApp</div>
+              <div class="cm-value">+233 537 041 221</div>
+            </div>
+          </a>
+          <a href="tel:+233245432443" class="contact-method">
+            <div class="cm-icon cm-icon-blue"><i data-lucide="phone"></i></div>
+            <div>
+              <div class="cm-label">Phone</div>
+              <div class="cm-value">+233 245 432 443</div>
+            </div>
+          </a>
+          <a href="mailto:noxvectorstudios@gmail.com" class="contact-method">
+            <div class="cm-icon cm-icon-gold"><i data-lucide="mail"></i></div>
+            <div>
+              <div class="cm-label">Email</div>
+              <div class="cm-value">noxvectorstudios@gmail.com</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <h3>Request a Demo</h3>
+        <p class="sub">We'll reach out within 24 hours to schedule a walkthrough.</p>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>School Name</label>
+            <input type="text" placeholder="e.g. Bright Future Academy" required />
+          </div>
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Head Teacher / Administrator" required />
+          </div>
+          <div class="form-group">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" placeholder="0244 000 000" required />
+          </div>
+          <div class="form-group">
+            <label>School Type</label>
+            <select>
+              <option value="">Select school type…</option>
+              <option>KG / Primary / JHS (Basic School)</option>
+              <option>Senior High School (SHS)</option>
+              <option>Technical / Vocational School</option>
+              <option>Private Basic + SHS</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Number of Students (approx.)</label>
+            <select>
+              <option value="">Select range…</option>
+              <option>Under 100</option>
+              <option>100 – 300</option>
+              <option>300 – 600</option>
+              <option>Over 600</option>
+            </select>
+          </div>
+          <button type="submit" class="form-submit">Send Request →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">EduTrack <span>·</span> NoxVector EduCare</div>
+    <p>Built in Ghana, for Ghanaian schools. © 2026 NoxVector EduCare. All rights reserved.</p>
+    <p>noxvectorstudios@gmail.com</p>
+  </div>
+</footer>
+
+<script>
+  // Initialise Lucide icons
+  lucide.createIcons();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Request sent ✓';
+    btn.style.background = '#16A34A';
+    btn.disabled = true;
+    const phone = '233537041221';
+    const msg = encodeURIComponent("Hi! I just filled out the EduTrack demo request form on your website. I'd love to see a demo.");
+    setTimeout(() => { window.open(`https://wa.me/${phone}?text=${msg}`, '_blank'); }, 800);
+  }
+</script>
+
+</body>
+</html>
