@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduTrack — School Management for Ghanaian Schools</title>
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link rel="apple-touch-icon" href="logo.jpeg">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="styles.css">
+
+  </head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-mark"><span><img src="logo.jpeg" alt="Logo"></span></div>
+      <div class="logo-text">
+        <strong>EduTrack</strong>
+        <small>by NoxVector EduCare</small>
+      </div>
+    </div>
+
+    <button type="button" class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav-links">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <ul class="nav-links" id="primary-nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#who">Who it's for</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+  <div class="nav-backdrop"></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Built for Ghanaian Schools</div>
+      <h1>Run your school.<br><em>Not spreadsheets.</em></h1>
+      <p>EduTrack gives Basic and SHS schools one place to manage students, track attendance, collect fees, and generate report cards — with live SMS alerts to parents the moment it matters.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Book a Free Demo <i data-lucide="arrow-right" style="width:16px;height:16px"></i></a>
+        <a href="#features" class="btn-outline">See what's inside <i data-lucide="chevron-down" style="width:16px;height:16px"></i></a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="float-pill pill-1">
+        <div class="pill-dot" style="background:#4ade80"></div>
+        247 students active
+      </div>
+      <div class="float-pill pill-2">
+        <div class="pill-dot" style="background:var(--gold)"></div>
+        SMS sent to 12 parents
+      </div>
+      <div class="dashboard-card">
+        <div class="dash-topbar">
+          <span class="dash-title">Today's Overview — JHS 1A</span>
+          <span class="dash-badge">● Live</span>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-box">
+            <div class="num">38</div>
+            <div class="lbl">Students Enrolled</div>
+            <div class="delta">↑ 3 this term</div>
+          </div>
+          <div class="stat-box">
+            <div class="num">GHS 24,800</div>
+            <div class="lbl">Fees Collected</div>
+            <div class="delta">↑ 82% collected</div>
+          </div>
+        </div>
+        <div class="attendance-bar">
+          <div class="att-row">
+            <span class="att-label">Attendance Today</span>
+            <span class="att-pct">94%</span>
+          </div>
+          <div class="bar-track"><div class="bar-fill" style="width:94%"></div></div>
+        </div>
+        <div class="sms-alert">
+          <div class="sms-icon">
+            <i data-lucide="message-square" style="width:14px;height:14px;color:var(--gold)"></i>
+          </div>
+          <div class="sms-text">
+            <strong>SMS Alert sent:</strong> "Dear Mrs. Asante, your ward Kofi was marked absent today. Please contact the school. — EduTrack"
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <i data-lucide="check-circle" style="width:16px;height:16px;color:var(--green)"></i>
+      GES grading scale built in
+    </div>
+    <div class="trust-item">
+      <i data-lucide="check-circle" style="width:16px;height:16px;color:var(--green)"></i>
+      Works on any device
+    </div>
+    <div class="trust-item">
+      <i data-lucide="check-circle" style="width:16px;height:16px;color:var(--green)"></i>
+      No IT team required
+    </div>
+    <div class="trust-item">
+      <i data-lucide="check-circle" style="width:16px;height:16px;color:var(--green)"></i>
+      Data stays secure in the cloud
+    </div>
+    <div class="trust-item">
+      <i data-lucide="check-circle" style="width:16px;height:16px;color:var(--green)"></i>
+      Basic &amp; SHS ready
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Everything you need</div>
+    <h2 class="section-title reveal">One system. Zero chaos.</h2>
+    <p class="section-sub reveal">Everything a school administrator needs — from the first day of term to the last report card — in a single clean interface.</p>
+    <div class="features-grid">
+      <div class="feature-card reveal-pop">
+        <div class="feature-media" style="background: url(report-card.jpg);"></div>
+        <div class="feature-body">
+          <div class="feature-icon icon-blue"><i data-lucide="file-text"></i></div>
+          <h3>Automated Report Cards</h3>
+          <p>Enter CA and exam scores once. EduTrack calculates totals, assigns grades using your school's scale, and generates printable report cards instantly.</p>
+        </div>
+      </div>
+      <div class="feature-card reveal-pop">
+        <div class="feature-media" style="background-image:url(fees.jpg)"></div>
+        <div class="feature-body">
+          <div class="feature-icon icon-gold"><i data-lucide="wallet"></i></div>
+          <h3>Fee Management</h3>
+          <p>Create fee structures for tuition, exam fees, feeding, and PTA. Generate invoices, record payments, and track defaulters — all in one place.</p>
+        </div>
+      </div>
+      <div class="feature-card reveal-pop">
+        <div class="feature-media" style="background-image:url(sms.jpg)"></div>
+        <div class="feature-body">
+          <div class="feature-icon icon-green"><i data-lucide="message-circle"></i></div>
+          <h3>Attendance + Live SMS</h3>
+          <p>Mark attendance in under 2 minutes. Parents receive an instant SMS the moment their child is marked absent — no phone calls needed.</p>
+        </div>
+      </div>
+      <div class="feature-card reveal-pop">
+        <div class="feature-media" style="background-image:url(records.jpg)"></div>
+        <div class="feature-body">
+          <div class="feature-icon icon-purple"><i data-lucide="users"></i></div>
+          <h3>Student Records</h3>
+          <p>Full student profiles with photos, guardian contacts, enrollment history, and medical notes. Everything you need, exactly where you expect it.</p>
+        </div>
+      </div>
+      <div class="feature-card reveal-pop">
+        <div class="feature-media" style="background-image:url('https://images.unsplash.com/photo-1633526543814-9718c8922b7a?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="feature-body">
+          <div class="feature-icon icon-red"><i data-lucide="calendar"></i></div>
+          <h3>Timetable Builder</h3>
+          <p>Build and publish your school timetable once. Teachers see their schedule, students see their classes, and changes update everywhere instantly.</p>
+        </div>
+      </div>
+      <div class="feature-card reveal-pop">
+        <div class="feature-media" style="background-image:url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80')"></div>
+        <div class="feature-body">
+          <div class="feature-icon icon-navy"><i data-lucide="megaphone"></i></div>
+          <h3>Announcements & Messaging</h3>
+          <p>Post school-wide announcements or send direct messages to parents and teachers. Keep everyone informed without leaving the platform.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Simple setup</div>
+    <h2 class="section-title reveal">Up and running in a day.</h2>
+    <p class="section-sub reveal">We handle the setup. You just bring your student list.</p>
+    <div class="how-banner reveal">
+      <img src="https://images.unsplash.com/photo-1632932693914-89b90ae3d16d?auto=format&fit=crop&w=1600&q=80" alt="Students settling into class on the first day with EduTrack set up">
+      <div class="how-banner-caption">From student list to live dashboard — typically in a single day.</div>
+    </div>
+    <div class="steps">
+      <div class="step reveal-pop">
+        <div class="step-num">1</div>
+        <h4>We set up your school</h4>
+        <p>We create your account, add your classes, subjects, and fee structures to match your school's structure.</p>
+      </div>
+      <div class="step reveal-pop">
+        <div class="step-num">2</div>
+        <h4>Import your students</h4>
+        <p>Bring your student list. We add them to the system with their guardians and enroll them in their classes.</p>
+      </div>
+      <div class="step reveal-pop">
+        <div class="step-num">3</div>
+        <h4>Train your staff</h4>
+        <p>A 1-hour walkthrough with your teachers and accountant. The interface is simple enough to learn in one session.</p>
+      </div>
+      <div class="step reveal-pop">
+        <div class="step-num">4</div>
+        <h4>Go live</h4>
+        <p>Start marking attendance, collecting fees, and communicating with parents from day one of term.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="who" id="who">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Designed for Ghana</div>
+    <h2 class="section-title reveal">Built for every level.</h2>
+    <p class="section-sub reveal">Whether you run a KG–JHS school or a full Senior High School, EduTrack is configured for your grading system and structure.</p>
+    <div class="who-grid">
+      <div class="who-card reveal-pop">
+        <div class="who-card-media" style="background-image:url(primary.jpg)"></div>
+        <div class="who-card-body">
+          <span class="tag tag-basic">Basic Schools</span>
+          <h3>KG, Primary &amp; JHS</h3>
+          <p>Manage every class from Creche to JHS 3 in one system. Our GES-aligned grading scale handles the full Basic school structure out of the box.</p>
+          <ul class="check-list">
+            <li><i data-lucide="check"></i> Nursery through JHS 3 class structure</li>
+            <li><i data-lucide="check"></i> GES grading scale (A1–F9) built in</li>
+            <li><i data-lucide="check"></i> CA + Exam score entry (30/70 split)</li>
+            <li><i data-lucide="check"></i> End-of-term report card generation</li>
+            <li><i data-lucide="check"></i> Parent portal for each student</li>
+          </ul>
+        </div>
+      </div>
+      <div class="who-card reveal-pop">
+        <div class="who-card-media" style="background-image:url(shs.webp)"></div>
+        <div class="who-card-body">
+          <span class="tag tag-shs">Senior High Schools</span>
+          <h3>SHS &amp; Technical Schools</h3>
+          <p>Handle the complexity of SHS programs, elective tracks, and WAEC-aligned grading — without spreadsheets or custom software.</p>
+          <ul class="check-list">
+            <li><i data-lucide="check"></i> Science, Arts, Business, Technical tracks</li>
+            <li><i data-lucide="check"></i> WAEC-aligned grading support</li>
+            <li><i data-lucide="check"></i> Semester and term management</li>
+            <li><i data-lucide="check"></i> House and boarding system tracking</li>
+            <li><i data-lucide="check"></i> Detailed financial reporting by term</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTALS -->
+<section class="portals">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Role-based access</div>
+    <h2 class="section-title reveal">Everyone sees exactly what they need.</h2>
+    <p class="section-sub reveal">One platform, four different views — each person sees only what's relevant to their role.</p>
+    <div class="portal-grid">
+      <div class="portal-card reveal-pop">
+        <div class="portal-media" style="background-image:url(admin.jpg)"></div>
+        <div class="portal-body">
+          <div class="portal-icon pi-admin"><i data-lucide="layout-dashboard"></i></div>
+          <h4>Admin Portal</h4>
+          <p>Full control over students, staff, fees, timetable, and reports.</p>
+        </div>
+      </div>
+      <div class="portal-card reveal-pop">
+        <div class="portal-media" style="background-image:url(teachers-portal.jpg)"></div>
+        <div class="portal-body">
+          <div class="portal-icon pi-teacher"><i data-lucide="graduation-cap"></i></div>
+          <h4>Teacher Portal</h4>
+          <p>Mark attendance, enter scores, view classes and generate report cards.</p>
+        </div>
+      </div>
+      <div class="portal-card reveal-pop">
+        <div class="portal-media" style="background-image:url('https://images.unsplash.com/photo-1636115798885-68e47c928729?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="portal-body">
+          <div class="portal-icon pi-accountant"><i data-lucide="receipt"></i></div>
+          <h4>Accountant Portal</h4>
+          <p>Generate invoices, record payments, track defaulters and view financial summaries.</p>
+        </div>
+      </div>
+      <div class="portal-card reveal-pop">
+        <div class="portal-media" style="background-image:url('https://images.unsplash.com/photo-1681826291722-70bd7e9e6fc3?auto=format&fit=crop&w=600&q=80')"></div>
+        <div class="portal-body">
+          <div class="portal-icon pi-parent"><i data-lucide="heart-handshake"></i></div>
+          <h4>Parent Portal</h4>
+          <p>View their child's attendance, assignments, fees, and receive SMS alerts.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="section-eyebrow reveal">Get in touch</div>
+        <h2 class="reveal">Ready to see it in action?</h2>
+        <p class="reveal">Book a free demo and we'll walk you through the full system in under 30 minutes. No commitment, no pressure — just a working product built for your school.</p>
+        <div class="contact-methods">
+          <a href="https://wa.me/233537041221" class="contact-method reveal" target="_blank" rel="noopener">
+            <div class="cm-icon cm-icon-green"><i data-lucide="message-circle"></i></div>
+            <div>
+              <div class="cm-label">WhatsApp</div>
+              <div class="cm-value">+233 537 041 221</div>
+            </div>
+          </a>
+          <a href="tel:+233245432443" class="contact-method">
+            <div class="cm-icon cm-icon-blue"><i data-lucide="phone"></i></div>
+            <div>
+              <div class="cm-label">Phone</div>
+              <div class="cm-value">+233 245 432 443</div>
+            </div>
+          </a>
+          <a href="mailto:noxvectorstudios@gmail.com" class="contact-method">
+            <div class="cm-icon cm-icon-gold"><i data-lucide="mail"></i></div>
+            <div>
+              <div class="cm-label">Email</div>
+              <div class="cm-value">noxvectorstudios@gmail.com</div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-card reveal-pop">
+        <h3>Request a Demo</h3>
+        <p class="sub">We'll reach out within 24 hours to schedule a walkthrough.</p>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>School Name</label>
+            <input type="text" placeholder="e.g. Bright Future Academy" required />
+          </div>
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Head Teacher / Administrator" required />
+          </div>
+          <div class="form-group">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" placeholder="0244 000 000" required />
+          </div>
+          <div class="form-group">
+            <label>School Type</label>
+            <select>
+              <option value="">Select school type…</option>
+              <option>KG / Primary / JHS (Basic School)</option>
+              <option>Senior High School (SHS)</option>
+              <option>Technical / Vocational School</option>
+              <option>Private Basic + SHS</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Number of Students (approx.)</label>
+            <select>
+              <option value="">Select range…</option>
+              <option>Under 100</option>
+              <option>100 – 300</option>
+              <option>300 – 600</option>
+              <option>Over 600</option>
+            </select>
+          </div>
+          <button type="submit" class="form-submit">Send Request →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-col footer-brand-col">
+        <div class="footer-logo">
+          <div class="logo-mark"><span><img src="logo.jpeg" alt="EduTrack logo"></span></div>
+          <div class="logo-text">
+            <strong>EduTrack</strong>
+            <small>by NoxVector EduCare</small>
+          </div>
+        </div>
+        <p class="footer-tagline">School management built for Basic and Senior High Schools across Ghana — attendance, fees, report cards, and parent SMS in one place.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/233537041221" target="_blank" rel="noopener" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+          <a href="tel:+233245432443" aria-label="Phone"><i data-lucide="phone"></i></a>
+          <a href="mailto:noxvectorstudios@gmail.com" aria-label="Email"><i data-lucide="mail"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#who">Who it's for</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#contact">Book a demo</a></li>
+          <li><a href="#who">Basic Schools</a></li>
+          <li><a href="#who">Senior High Schools</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Get in touch</h5>
+        <ul class="footer-contact-list">
+          <li><i data-lucide="message-circle"></i> +233 537 041 221</li>
+          <li><i data-lucide="phone"></i> +233 245 432 443</li>
+          <li><i data-lucide="mail"></i> noxvectorstudios@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 NoxVector EduCare. All rights reserved.</p>
+      <p class="footer-built">Built in Ghana, for Ghanaian schools 🇬🇭</p>
+    </div>
+  </div>
+</footer>
+
+<script src="index.js"></script>
+</body>
+</html>
