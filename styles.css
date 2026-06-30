@@ -127,7 +127,7 @@ nav::before {
     /* HERO */
     .hero {
       background:
-        linear-gradient(135deg, rgba(13,18,46,9) 0%, rgba(15,31,92,9) 45%, rgba(26,61,181,9) 100%),
+        linear-gradient(135deg, rgba(13,18,46,0.8) 0%, rgba(15,31,92,0.68) 45%, rgba(26,61,181,0.3) 100%),
         url('https://images.unsplash.com/photo-1473649085228-583485e6e4d7?auto=format&fit=crop&w=1740&q=80') center 30% / cover no-repeat;
       color: var(--white);
       padding: 96px 5% 80px; position: relative; overflow: hidden;
